@@ -28,6 +28,7 @@ const Login = () => {
             if(result.data){
                 console.log('Todo exitoso....')
                 setError(null);
+                //configurar al token
                 // me envia al dashboard
             }else{
                 setError(result.message);
