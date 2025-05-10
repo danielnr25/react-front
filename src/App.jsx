@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 
@@ -5,10 +6,15 @@ const App = () => {
   return (
     <>
         <div>
-            App
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="*" element={<h1>PAGINA NO ENCONTRADA</h1>} />
+            </Routes>
         </div>
-        <Home />
-        <Login />
+
+     
+      
     </>
   )
 }
