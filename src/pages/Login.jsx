@@ -1,15 +1,14 @@
-import React from 'react'
 
+import { NavLink } from 'react-router-dom'
 const Login = () => {
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Ingrese a su cuenta
-          </h2>
-        </div>
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="flex flex-1 mt-16 lg:mt-20 flex-col justify-center px-6 pt-20 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md shadow-md px-10 bg-gray-50 pb-10 pt-10 rounded-md">
+            <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-blue-800 mb-10 ">
+                Ingrese a su cuenta
+            </h2>
+       
+       
           <form action="#" method="POST" className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
@@ -48,21 +47,22 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+               className="flex w-full justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-700 focus-visible:outline  focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                Inciar sessión
               </button>
             </div>
+
+            <div className="text-center mt-4">
+                <p className="text-base text-gray-800">¿No tienes cuenta? <NavLink to="/register" className="text-blue-700 font-semibold">Regístrate</NavLink></p>
+            </div>
+
           </form>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
-          ¿No tienes cuenta?{' '}
-            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-            Regístrate
-            </a>
-          </p>
-        </div>
+      
       </div>
+    </div>
+
   )
 }
 
