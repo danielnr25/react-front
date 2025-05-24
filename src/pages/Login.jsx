@@ -1,10 +1,14 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate} from 'react-router-dom'
+
 const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
+
     const handleLogin = (e) =>{
         e.preventDefault(); // previene el comportamiento por defecto del formulario
         const data = { // crear objeto con los datos del usuario
@@ -12,7 +16,7 @@ const Login = () => {
             password
         }
         
-        fetch("http://localhost:3000/auth/login",{
+        fetch("http://localhost:3000/api/auth/login",{
             method: "POST", 
             headers: { 
               "Content-Type": "application/json" // Tipo de contenido JSON
@@ -30,6 +34,7 @@ const Login = () => {
                 setError(null);
                 //configurar al token
                 // me envia al dashboard
+                navigate("/dashboard");
             }else{
                 setError(result.message);
             }
