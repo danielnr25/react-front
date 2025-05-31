@@ -53,7 +53,7 @@ const App = () => {
                         :<Login />
                     } />
                 <Route path="*" element={<h1>PAGINA NO ENCONTRADA</h1>} />
-                <Route path="/admin" element={<Dashboard />}/>
+                <Route path="/admin" element = {<PrivateRoute element={<Dashboard />} />}/>
             </Routes>
         </div>
 
