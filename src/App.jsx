@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
+import CategoriesIndex from "./components/Dashboard/categories/CategoriesIndex";
 
 function parseJwt(token) { // funcion para decodificar el token JWT y obtener la información del usuario, :https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript, nos permite obtener la información del usuario desde el token JWT almacenado en localStorage y verificar si el token es válido. 
     try {
@@ -52,8 +53,12 @@ const App = () => {
                         <Navigate to="/admin" />
                         :<Login />
                     } />
-                <Route path="*" element={<h1>PAGINA NO ENCONTRADA</h1>} />
-                <Route path="/admin" element = {<PrivateRoute element={<Dashboard />} />}/>
+               
+                <Route path="/admin/" element = {<PrivateRoute element={<Dashboard />} />}>
+                    <Route path="categories" element={<CategoriesIndex />} />
+                
+                </Route>
+                 <Route path="*" element={<h1>PAGINA NO ENCONTRADA</h1>} />
             </Routes>
         </div>
 
