@@ -1,3 +1,4 @@
+import CategoriesList from "./CategoriesList"
 
 const CategoriesIndex = () => {
   return (
@@ -20,6 +21,7 @@ const CategoriesIndex = () => {
         </div>
         <hr className="my-4" />
 
+        <CategoriesList />
     </div>
   )
 }
