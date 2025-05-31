@@ -1,5 +1,5 @@
 import Header from "./components/Navbar/Navbar";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -38,14 +38,20 @@ const App = () => {
     const tokenValid = isTokenValid();
     const location = useLocation();
 
+    const showNavbar = !location.pathname.startsWith('/admin'); // ocultar el navbar cuando las rutas comiencen con "/admin"
 
   return (
     <>
-        <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
-            <Header />
+        <div className={`transition-all duration-300 ${showNavbar ? "px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]" : ""}`}>
+           {showNavbar && <Header />}
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" 
+                    element={
+                        tokenValid ?
+                        <Navigate to="/admin" />
+                        :<Login />
+                    } />
                 <Route path="*" element={<h1>PAGINA NO ENCONTRADA</h1>} />
                 <Route path="/admin" element={<Dashboard />}/>
             </Routes>
