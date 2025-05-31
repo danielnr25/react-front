@@ -28,13 +28,14 @@ const Login = () => {
            }
            return response.json();
         }).then((result)=>{
-            console.log("Resultado de la autenticación", result);
-            if(result.data){
-                console.log('Todo exitoso....')
+            //console.log("Resultado de la autenticación", result);
+            if(result.token){
+                localStorage.setItem("token",result.token);
+                console.log('Token generado: '+result.token)
                 setError(null);
                 //configurar al token
                 // me envia al dashboard
-                navigate("/dashboard");
+                navigate("/admin");
             }else{
                 setError(result.message);
             }
