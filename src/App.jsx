@@ -5,6 +5,9 @@ import Login from "./pages/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CategoriesIndex from "./components/Dashboard/categories/CategoriesIndex";
 import CategoriesForm from "./components/Dashboard/categories/CategoriesForm";
+import ProductIndex from "./components/Dashboard/product/ProductIndex";
+import SalesIndex from "./components/Dashboard/sales/SalesIndex";
+import Index from "./components/Dashboard/admin/Index";
 
 function parseJwt(token) { // funcion para decodificar el token JWT y obtener la información del usuario, :https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript, nos permite obtener la información del usuario desde el token JWT almacenado en localStorage y verificar si el token es válido. 
     try {
@@ -56,9 +59,12 @@ const App = () => {
                     } />
                
                 <Route path="/admin/" element = {<PrivateRoute element={<Dashboard />} />}>
+                    <Route path="dashboard" element={<Index />} />
                     <Route path="categories" element={<CategoriesIndex />} />
                     <Route path="categories/new" element={<CategoriesForm />} />
                     <Route path="categories/edit/:id" element={<CategoriesForm />} />
+                    <Route path="products" element={<ProductIndex />} />
+                    <Route path="detailshop" element={<SalesIndex />} />
                 </Route>
                  <Route path="*" element={<h1>PAGINA NO ENCONTRADA</h1>} />
             </Routes>
