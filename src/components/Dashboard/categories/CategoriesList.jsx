@@ -1,4 +1,4 @@
-const CategoriesList = () => {
+const CategoriesList = ({categories}) => {
   return (
     <div>
         <table className="w-full border border-gray-300 roundend-sm">
@@ -10,14 +10,19 @@ const CategoriesList = () => {
                 </tr>
             </thead>
             <tbody className="text-base font-medium text-center">
-                <tr>
-                    <td className="py-3">Node</td>
-                    <td className="py-3">Lo mejor de Node 2025</td>
-                    <td>
-                        <button className="bg-yellow-600 mr-2 text-white px-3 py-1.5 rounded-md">Editar</button>
-                        <button className="bg-red-600 text-white px-3 py-1.5 rounded-md">Eliminar</button>
-                    </td>
-                </tr>
+                {categories.map((category)=>(
+                    <tr>
+                        <td className="py-3 uppercase">{category.nombre}</td>
+                        <td className="py-3">{category.descripcion}</td>
+                        <td>
+                            <button className="bg-yellow-600 mr-2 text-white px-3 py-1.5 rounded-md">Editar</button>
+                            <button className="bg-red-600 text-white px-3 py-1.5 rounded-md">Eliminar</button>
+                        </td>
+                    </tr>
+                )) }
+
+
+               
             </tbody>
         </table>
 

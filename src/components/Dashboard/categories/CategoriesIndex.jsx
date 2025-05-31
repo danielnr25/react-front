@@ -1,6 +1,29 @@
 import CategoriesList from "./CategoriesList"
+import { useEffect,useState } from "react";
+import axios from "axios";
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 
 const CategoriesIndex = () => {
+    const [searchTerm,setSearchTerm] = useState("");
+    const [categories,setCategories] = useState([]); // me sirve para mostrar el resultado de la busqueda
+    const [allCategories,setAllCategories] = useState([]); // me sirve para mostrar todas las categorias
+
+    useEffect(()=>{
+        const fetchCategories = async() =>{
+            try {
+                const response = await axios.get(`${BASE_URL}/categories`);
+                setAllCategories(response.data);
+                setCategories(response.data);
+            } catch (error) {
+                console.log('Error al obtener las categorias: ',error)
+            }
+        }
+
+        fetchCategories();
+    },[]);
+
+
   return (
     <div>
         <h1 className="text-2xl font-semibold text-gray-900">Listado de Categorias</h1>
@@ -21,7 +44,7 @@ const CategoriesIndex = () => {
         </div>
         <hr className="my-4" />
 
-        <CategoriesList />
+        <CategoriesList categories={categories} />
     </div>
   )
 }
