@@ -77,6 +77,7 @@ const ProductForm = ({ initialData = {} }) => {
          if (imageFile) {
             formDataToSend.append('image', imageFile)
          }
+         console.log(formDataToSend);
          if (id) {
             const response = await updateProduct(id, formDataToSend);
             toast.success(response.message);

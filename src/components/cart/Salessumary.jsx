@@ -5,7 +5,7 @@ const Salessumary = ({ amountCart }) => {
    const procederPago = () => {
       //reiniciar el carrito
       localStorage.removeItem('cart');
-      alert('Gracias por su compra');
+      toast.success("Compra realizada con éxito");
       window.location.href = '/';
    }
    return (
