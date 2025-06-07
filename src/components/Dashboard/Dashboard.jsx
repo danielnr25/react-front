@@ -26,7 +26,7 @@ const Dashboard = () => {
     const toggleSidebar = () => setCollapsed(!collapsed);
     const isActive = (path) => location.pathname.startsWith(path);
 
-    const menuItems = userRole === 1 ? 
+    const menuItems = userRole === '1' ? 
     [
         { name: "Inicio", icon: HomeIcon, path: "/admin/dashboard" },
         { name: "Ventas", icon: ChartBarIcon, path: "/admin/detailshop" },
