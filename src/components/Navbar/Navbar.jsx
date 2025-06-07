@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon,MagnifyingGlassIcon,UserIcon,ShoppingCartIcon  } from '@heroicons/react/24/outline';
 import { NavLink } from "react-router-dom";
+import { CartContext } from "@/context/CartContext";
 
 const Header = () => {
-
+   const {cartCount} = useContext(CartContext);
    const navigation = [
       { name: 'Inicio', href: '/' },
       { name: 'Productos', href: '/collection' },
@@ -53,7 +54,10 @@ const Header = () => {
          <NavLink to="/login" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
            <UserIcon className="h-6 w-6 text-gray-900 cursor-pointer" />
          </NavLink>
-         <ShoppingCartIcon className="h-6 w-6 text-gray-900 cursor-pointer" />
+         <NavLink to="/cart">
+            <ShoppingCartIcon className="h-6 w-6 text-gray-900 cursor-pointer" />
+            <span className="absolute top-4 right-5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white text-xs font-bold">{cartCount}</span>
+      </NavLink>
        </div>
      </nav>
      <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -97,6 +101,13 @@ const Header = () => {
                >
                  Log in
                </NavLink>
+               <NavLink
+                  to="/cart"
+                  className="-mx-3 flex rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                  Carrito  
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white text-xs font-bold">{cartCount}</span>
+            </NavLink>
              </div>
            </div>
          </div>

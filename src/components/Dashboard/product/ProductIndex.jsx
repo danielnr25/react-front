@@ -1,5 +1,10 @@
-
+import ProductList from "./ProductList"
+import { useNavigate } from "react-router-dom";
 const ProductIndex = () => {
+   const navigate = useNavigate();
+   const handleNewProduct = () => {
+      navigate("/admin/products/new"); // Ajusta esta ruta según tu estructura
+   };
   return (
     <div>
         <h1 className="text-2xl font-semibold text-gray-900">Listado de Productos</h1>
@@ -7,7 +12,7 @@ const ProductIndex = () => {
 
         <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
-                <button className="bg-blue-800 text-white px-3 py-1.5 rounded-md cursor-pointer">Nuevo</button>
+                <button onClick={handleNewProduct} className="bg-blue-800 text-white px-3 py-1.5 rounded-md cursor-pointer">Nuevo</button>
                 <input 
                     type="text"
                     placeholder="Buscar producto"
@@ -19,6 +24,7 @@ const ProductIndex = () => {
             </button>
         </div>
         <hr className="my-4" />
+        <ProductList />
 
     </div>
   )
